@@ -1,12 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { HscFrame } from "./components/HscFrame";
 import { stopPreview } from "./audioPreview";
-import {
-  progressFillPx,
-  showProgressHeader,
-  STEPS,
-  type StepId,
-} from "./steps";
+import { STEPS, type StepId } from "./steps";
 import { defaultBedtimeTime, defaultWakeTime, type PlanSelections } from "./types";
 import {
   ArcCarouselScreen,
@@ -200,8 +195,6 @@ export function HscOnboardingFlow() {
 
   return (
     <HscFrame
-      progressFillPx={progressFillPx(step)}
-      showProgress={showProgressHeader(step)}
       buttonLabel={continueLabel}
       buttonDisabled={continueDisabled}
       buttonVariant={buttonVariant}

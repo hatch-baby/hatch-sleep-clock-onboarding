@@ -4,28 +4,22 @@ import { HscPrimaryButton } from "./HscPrimaryButton";
 
 type Props = {
   children: ReactNode;
-  progressFillPx: number;
-  showProgress?: boolean;
   buttonLabel: string;
   buttonDisabled?: boolean;
   buttonVariant?: "primary" | "tertiary";
   onButtonClick: () => void;
   showFooterGradient?: boolean;
   hideButton?: boolean;
-  onBack?: () => void;
 };
 
 export function HscFrame({
   children,
-  progressFillPx,
-  showProgress = true,
   buttonLabel,
   buttonDisabled,
   buttonVariant = "primary",
   onButtonClick,
   showFooterGradient = false,
   hideButton = false,
-  onBack,
 }: Props) {
   return (
     <div className="hsc-page hsc-root">
@@ -33,30 +27,6 @@ export function HscFrame({
         <div className="hsc-layer hsc-layer-status" aria-hidden>
           <img src={shellAssets.statusBar} alt="" />
         </div>
-
-        {showProgress && (
-          <div className="hsc-layer hsc-layer-progress" aria-hidden>
-            {onBack && (
-              <button
-                type="button"
-                className="hsc-back-btn"
-                onClick={onBack}
-                aria-label="Go back"
-              >
-                ‹
-              </button>
-            )}
-<div className="hsc-progress-track-wrap">
-              <img src={shellAssets.progressTrack} alt="" />
-            </div>
-            <div
-              className="hsc-progress-fill-wrap"
-              style={{ width: progressFillPx }}
-            >
-              <img src={shellAssets.progressFill} alt="" />
-            </div>
-          </div>
-        )}
 
         <div className="hsc-layer hsc-layer-content">{children}</div>
 
