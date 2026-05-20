@@ -196,7 +196,7 @@
 .hsc-plan-three-body {
   margin: 0;
   font-family: var(--hds-font-family-header);
-  font-weight: 500;
+  font-weight: 300;
   font-size: var(--hds-font-size-300);
   line-height: var(--hds-line-height-350);
   color: var(--hds-text-primary);

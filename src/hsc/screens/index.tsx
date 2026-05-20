@@ -159,7 +159,7 @@ export function PlanThreePartsScreen() {
   return (
     <div className="hsc-abs hsc-plan-three-block">
       <p className="hsc-plan-three-body">
-        Your night has three parts you can control. Plan them, and the data tells you what&apos;s working and what to try next.
+        Your clock handles the sleep. You plan what you can control. The data tells you what&apos;s working and what to try next.
       </p>
     </div>
   );

@@ -113,7 +113,7 @@ export function HscOnboardingFlow() {
   };
 
   const continueLabel = (() => {
-    if (step === "planThreeParts") return "Show me";
+    if (step === "planThreeParts") return "What's in my control";
     if (step === "wakeTime") return "Set it";
     if (step === "heardIssue") return "Let's build the plan";
     if (step === "wakeSummary") return "Let's set bedtime now";
