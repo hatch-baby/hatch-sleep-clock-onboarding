@@ -157,12 +157,9 @@ export function BluetoothIntroScreen() {
 
 export function PlanThreePartsScreen() {
   return (
-    <div className="hsc-abs hsc-abs-headline-block">
-      <h1 className="hds-h5 hsc-abs-headline-title">
-        Your night has three parts you can control
-      </h1>
-      <p className="hds-h6 hsc-abs-headline-sub" style={{ marginTop: 20 }}>
-        Plan them, and the data tells you what&apos;s working and what to try next.
+    <div className="hsc-abs hsc-plan-three-block">
+      <p className="hsc-plan-three-body">
+        Your night has three parts you can control. Plan them, and the data tells you what&apos;s working and what to try next.
       </p>
     </div>
   );

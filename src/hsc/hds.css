@@ -186,6 +186,22 @@
   width: 281px;
 }
 
+.hsc-plan-three-block {
+  left: 20px;
+  bottom: 120px;
+  top: auto;
+  width: 335px;
+}
+
+.hsc-plan-three-body {
+  margin: 0;
+  font-family: var(--hds-font-family-header);
+  font-weight: 500;
+  font-size: var(--hds-font-size-300);
+  line-height: var(--hds-line-height-350);
+  color: var(--hds-text-primary);
+}
+
 .hsc-abs-headline-title {
   margin: 0;
 }
@@ -479,7 +495,7 @@
   width: 335px;
   margin: 0;
   font-family: var(--hds-font-family-header);
-  font-weight: 500;
+  font-weight: 300;
   font-size: var(--hds-font-size-250);
   line-height: var(--hds-line-height-300);
   color: var(--hds-text-primary);
@@ -831,10 +847,19 @@
 }
 
 /* Back button in progress header */
+.hsc-layer-back {
+  left: 0;
+  top: 43px;
+  width: 375px;
+  height: 44px;
+  z-index: 6;
+  pointer-events: none;
+}
+
 .hsc-back-btn {
   position: absolute;
   left: 16px;
-  top: 52px;
+  top: 8px;
   width: 28px;
   height: 28px;
   background: transparent;

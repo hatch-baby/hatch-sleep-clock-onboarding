@@ -72,6 +72,10 @@ export function HscOnboardingFlow() {
     () => setIndex((i) => Math.min(i + 1, STEPS.length - 1)),
     []
   );
+  const onBack = useCallback(
+    () => setIndex((i) => Math.max(i - 1, 0)),
+    []
+  );
   const goTo = useCallback((id: StepId) => {
     const i = STEPS.indexOf(id);
     if (i >= 0) setIndex(i);
@@ -131,6 +135,7 @@ export function HscOnboardingFlow() {
 
   const isArcCarousel = step === "arcCarousel";
   const isHomeHQ = step === "homeHQ";
+  const showBack = step !== "bluetoothIntro" && step !== "arcCarousel" && step !== "homeHQ";
 
   const renderScreen = () => {
     switch (step) {
@@ -201,6 +206,7 @@ export function HscOnboardingFlow() {
       onButtonClick={handleContinue}
       showFooterGradient={showFooterGradient}
       hideButton={isArcCarousel || isHomeHQ}
+      onBack={showBack ? onBack : undefined}
     >
       {renderScreen()}
     </HscFrame>

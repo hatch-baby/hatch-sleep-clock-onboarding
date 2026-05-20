@@ -8,6 +8,7 @@ type Props = {
   buttonDisabled?: boolean;
   buttonVariant?: "primary" | "tertiary";
   onButtonClick: () => void;
+  onBack?: () => void;
   showFooterGradient?: boolean;
   hideButton?: boolean;
 };
@@ -18,6 +19,7 @@ export function HscFrame({
   buttonDisabled,
   buttonVariant = "primary",
   onButtonClick,
+  onBack,
   showFooterGradient = false,
   hideButton = false,
 }: Props) {
@@ -27,6 +29,14 @@ export function HscFrame({
         <div className="hsc-layer hsc-layer-status" aria-hidden>
           <img src={shellAssets.statusBar} alt="" />
         </div>
+
+        {onBack && (
+          <div className="hsc-layer hsc-layer-back">
+            <button type="button" className="hsc-back-btn" onClick={onBack} aria-label="Go back">
+              ‹
+            </button>
+          </div>
+        )}
 
         <div className="hsc-layer hsc-layer-content">{children}</div>
 
