@@ -23,6 +23,7 @@ export type StepId =
   | "placementDone"
   | "bedSize"
   | "shareBed"
+  | "placementFinal"
   | "homeHQ";
 
 export const STEPS: StepId[] = [
@@ -50,14 +51,52 @@ export const STEPS: StepId[] = [
   "placementDone",
   "bedSize",
   "shareBed",
+  "placementFinal",
   "homeHQ",
 ];
+
+/** Progress fill width in px (292px track max) — tuned to Figma frames */
+const PROGRESS_FILL_PX: Partial<Record<StepId, number>> = {
+  bluetoothIntro: 76,
+  planThreeParts: 88,
+  arcBedtime: 100,
+  arcSleep: 108,
+  arcWake: 116,
+  arcEaseIn: 124,
+  heardBedtime: 132,
+  heardWake: 140,
+  heardPlan: 148,
+  wakeTime: 156,
+  wakeCategory: 76,
+  wakeContent: 120,
+  wakeSummary: 140,
+  bedtime: 160,
+  easeCategory: 180,
+  easeContent: 200,
+  easeInBed: 220,
+  planSet: 240,
+  hatchPlus: 252,
+  clockLearns: 264,
+  placementIntro: 272,
+  placementDone: 280,
+  bedSize: 286,
+  shareBed: 290,
+  placementFinal: 292,
+  homeHQ: 292,
+};
 
 export function stepIndex(id: StepId): number {
   return STEPS.indexOf(id);
 }
 
+export function progressFillPx(id: StepId): number {
+  return PROGRESS_FILL_PX[id] ?? 76;
+}
+
 export function progressForStep(id: StepId): number {
-  const i = stepIndex(id);
-  return i < 0 ? 0 : (i + 1) / STEPS.length;
+  return progressFillPx(id) / 292;
+}
+
+export function showProgressHeader(id: StepId): boolean {
+  return id !== "homeHQ";
 }

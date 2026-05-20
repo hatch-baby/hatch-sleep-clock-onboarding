@@ -2,7 +2,7 @@ export type ContentPick = {
   id: string;
   title: string;
   meta: string;
-  artworkHue: string;
+  imageUrl: string;
   audioUrl: string;
 };
 

@@ -1,27 +1,44 @@
-import type { Category } from "./types";
+import { easeThumbnails, wakeThumbnails } from "./figmaAssets";
+import type { Category, ContentPick } from "./types";
+
+function pick(
+  id: string,
+  title: string,
+  meta: string,
+  thumbMap: Record<string, string>,
+  audioPath: string
+): ContentPick {
+  return {
+    id,
+    title,
+    meta,
+    imageUrl: thumbMap[id] ?? "/media/wake/morning-rave.png",
+    audioUrl: audioPath,
+  };
+}
 
 const wakeHighEnergy = [
-  { id: "morning-rave", title: "Morning Rave", meta: "High energy • Shuffle", artworkHue: "#E8D4B8", audioUrl: "/audio/wake/morning-rave.mp3" },
-  { id: "gold-medal-morning", title: "Gold Medal Morning", meta: "High energy • Sports", artworkHue: "#D4C4A8", audioUrl: "/audio/wake/gold-medal-morning.mp3" },
-  { id: "nyc-morning", title: "New York City Morning", meta: "High energy • Cityscapes", artworkHue: "#C9B89A", audioUrl: "/audio/wake/nyc-morning.mp3" },
+  pick("morning-rave", "Morning Rave", "High energy • Shuffle", wakeThumbnails, "/audio/wake/morning-rave.mp3"),
+  pick("gold-medal-morning", "Gold Medal Morning", "High energy • Sports", wakeThumbnails, "/audio/wake/gold-medal-morning.mp3"),
+  pick("nyc-morning", "New York City Morning", "High energy • Cityscapes", wakeThumbnails, "/audio/wake/nyc-morning.mp3"),
 ];
 
 const wakeNature = [
-  { id: "forest-dawn", title: "Forest Dawn", meta: "Nature • Birds", artworkHue: "#B8C9A8", audioUrl: "/audio/wake/forest-dawn.mp3" },
-  { id: "ocean-breeze", title: "Ocean Breeze", meta: "Nature • Waves", artworkHue: "#A8C4C9", audioUrl: "/audio/wake/ocean-breeze.mp3" },
-  { id: "mountain-air", title: "Mountain Air", meta: "Nature • Wind", artworkHue: "#C4B8A8", audioUrl: "/audio/wake/mountain-air.mp3" },
+  pick("forest-dawn", "Forest Dawn", "Nature • Birds", wakeThumbnails, "/audio/wake/forest-dawn.mp3"),
+  pick("ocean-breeze", "Ocean Breeze", "Nature • Waves", wakeThumbnails, "/audio/wake/ocean-breeze.mp3"),
+  pick("mountain-air", "Mountain Air", "Nature • Wind", wakeThumbnails, "/audio/wake/mountain-air.mp3"),
 ];
 
 const wakeGentle = [
-  { id: "soft-piano", title: "Soft Piano", meta: "Soft & gentle", artworkHue: "#E4DDD4", audioUrl: "/audio/wake/soft-piano.mp3" },
-  { id: "morning-mist", title: "Morning Mist", meta: "Ambient • Calm", artworkHue: "#D8D4CE", audioUrl: "/audio/wake/morning-mist.mp3" },
-  { id: "quiet-sunrise", title: "Quiet Sunrise", meta: "Acoustic • Light", artworkHue: "#E0D8CC", audioUrl: "/audio/wake/quiet-sunrise.mp3" },
+  pick("soft-piano", "Soft Piano", "Soft & gentle", wakeThumbnails, "/audio/wake/soft-piano.mp3"),
+  pick("morning-mist", "Morning Mist", "Ambient • Calm", wakeThumbnails, "/audio/wake/morning-mist.mp3"),
+  pick("quiet-sunrise", "Quiet Sunrise", "Acoustic • Light", wakeThumbnails, "/audio/wake/quiet-sunrise.mp3"),
 ];
 
 const wakeSunrise = [
-  { id: "sunrise-only", title: "Sunrise light only", meta: "No sound", artworkHue: "#F0E6D0", audioUrl: "/audio/wake/sunrise-only.mp3" },
-  { id: "gentle-glow", title: "Gentle Glow", meta: "Light fade", artworkHue: "#EDE4D4", audioUrl: "/audio/wake/gentle-glow.mp3" },
-  { id: "dawn-rise", title: "Dawn Rise", meta: "Warm light", artworkHue: "#E8DCC8", audioUrl: "/audio/wake/dawn-rise.mp3" },
+  pick("sunrise-only", "Sunrise light only", "No sound", wakeThumbnails, "/audio/wake/sunrise-only.mp3"),
+  pick("gentle-glow", "Gentle Glow", "Light fade", wakeThumbnails, "/audio/wake/gentle-glow.mp3"),
+  pick("dawn-rise", "Dawn Rise", "Warm light", wakeThumbnails, "/audio/wake/dawn-rise.mp3"),
 ];
 
 export const wakeCategories: Category[] = [
@@ -32,27 +49,27 @@ export const wakeCategories: Category[] = [
 ];
 
 const easeStory = [
-  { id: "ophelia-trilogy", title: "Ophelia: Trilogy", meta: "Audiobooks • 19min", artworkHue: "#C9B8A4", audioUrl: "/audio/ease/ophelia-trilogy.mp3" },
-  { id: "love-letters", title: "Love Letters", meta: "Audiobooks • 19min", artworkHue: "#B8A898", audioUrl: "/audio/ease/love-letters.mp3" },
-  { id: "midnight-library", title: "The Midnight Library", meta: "Audiobooks • 22min", artworkHue: "#A89888", audioUrl: "/audio/ease/midnight-library.mp3" },
+  pick("ophelia-trilogy", "Ophelia: Trilogy", "Audiobooks • 19min", easeThumbnails, "/audio/ease/ophelia-trilogy.mp3"),
+  pick("love-letters", "Love Letters", "Audiobooks • 19min", easeThumbnails, "/audio/ease/love-letters.mp3"),
+  pick("midnight-library", "The Midnight Library", "Audiobooks • 22min", easeThumbnails, "/audio/ease/midnight-library.mp3"),
 ];
 
 const easeSoundBath = [
-  { id: "deep-harmony", title: "Deep Harmony", meta: "Sound bath • 30min", artworkHue: "#9A8E82", audioUrl: "/audio/ease/deep-harmony.mp3" },
-  { id: "crystal-bowl", title: "Crystal Bowl", meta: "Sound bath • 25min", artworkHue: "#8E8278", audioUrl: "/audio/ease/crystal-bowl.mp3" },
-  { id: "floating-tones", title: "Floating Tones", meta: "Sound bath • 20min", artworkHue: "#827870", audioUrl: "/audio/ease/floating-tones.mp3" },
+  pick("deep-harmony", "Deep Harmony", "Sound bath • 30min", easeThumbnails, "/audio/ease/deep-harmony.mp3"),
+  pick("crystal-bowl", "Crystal Bowl", "Sound bath • 25min", easeThumbnails, "/audio/ease/crystal-bowl.mp3"),
+  pick("floating-tones", "Floating Tones", "Sound bath • 20min", easeThumbnails, "/audio/ease/floating-tones.mp3"),
 ];
 
 const easeSleep = [
-  { id: "rain-on-roof", title: "Rain on Roof", meta: "Sleep sounds", artworkHue: "#6E6860", audioUrl: "/audio/ease/rain-on-roof.mp3" },
-  { id: "white-noise", title: "Steady White Noise", meta: "Sleep sounds", artworkHue: "#646058", audioUrl: "/audio/ease/white-noise.mp3" },
-  { id: "fan-hum", title: "Fan Hum", meta: "Sleep sounds", artworkHue: "#5A5650", audioUrl: "/audio/ease/fan-hum.mp3" },
+  pick("rain-on-roof", "Rain on Roof", "Sleep sounds", easeThumbnails, "/audio/ease/rain-on-roof.mp3"),
+  pick("white-noise", "Steady White Noise", "Sleep sounds", easeThumbnails, "/audio/ease/white-noise.mp3"),
+  pick("fan-hum", "Fan Hum", "Sleep sounds", easeThumbnails, "/audio/ease/fan-hum.mp3"),
 ];
 
 const easeMeditation = [
-  { id: "body-scan", title: "Body Scan", meta: "Meditation • 15min", artworkHue: "#7A7268", audioUrl: "/audio/ease/body-scan.mp3" },
-  { id: "breath-work", title: "Breath Work", meta: "Meditation • 12min", artworkHue: "#706860", audioUrl: "/audio/ease/breath-work.mp3" },
-  { id: "letting-go", title: "Letting Go", meta: "Meditation • 18min", artworkHue: "#665E58", audioUrl: "/audio/ease/letting-go.mp3" },
+  pick("body-scan", "Body Scan", "Meditation • 15min", easeThumbnails, "/audio/ease/body-scan.mp3"),
+  pick("breath-work", "Breath Work", "Meditation • 12min", easeThumbnails, "/audio/ease/breath-work.mp3"),
+  pick("letting-go", "Letting Go", "Meditation • 18min", easeThumbnails, "/audio/ease/letting-go.mp3"),
 ];
 
 export const easeCategories: Category[] = [
@@ -69,3 +86,18 @@ export function getWakeCategory(id: string) {
 export function getEaseCategory(id: string) {
   return easeCategories.find((c) => c.id === id);
 }
+
+/** Figma 727 tile order: TL take my time, TR take me outside, BL ready to go, BR just sunrise */
+export const wakeCategoryPositions = [
+  { id: "takeMyTime", pos: "tl" as const },
+  { id: "takeMeOutside", pos: "tr" as const },
+  { id: "readyToGo", pos: "bl" as const },
+  { id: "justSunrise", pos: "br" as const },
+];
+
+export const easeCategoryPositions = [
+  { id: "withAStory", pos: "tl" as const },
+  { id: "immersedInSound", pos: "tr" as const },
+  { id: "outLikeALight", pos: "bl" as const },
+  { id: "withGuidance", pos: "br" as const },
+];
