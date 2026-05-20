@@ -1,9 +1,7 @@
 export type StepId =
   | "bluetoothIntro"
   | "planThreeParts"
-  | "arcBedtime"
-  | "arcSleep"
-  | "arcWake"
+  | "arcCarousel"
   | "sleepIssue"
   | "heardIssue"
   | "wakeTime"
@@ -17,19 +15,15 @@ export type StepId =
   | "planSet"
   | "hatchPlus"
   | "clockLearns"
-  | "placementIntro"
-  | "placementDone"
-  | "bedSize"
-  | "shareBed"
-  | "placementFinal"
+  | "placement"
+  | "bedAndShare"
+  | "threeControls"
   | "homeHQ";
 
 export const STEPS: StepId[] = [
   "bluetoothIntro",
   "planThreeParts",
-  "arcBedtime",
-  "arcSleep",
-  "arcWake",
+  "arcCarousel",
   "sleepIssue",
   "heardIssue",
   "wakeTime",
@@ -43,39 +37,32 @@ export const STEPS: StepId[] = [
   "planSet",
   "hatchPlus",
   "clockLearns",
-  "placementIntro",
-  "placementDone",
-  "bedSize",
-  "shareBed",
-  "placementFinal",
+  "placement",
+  "bedAndShare",
+  "threeControls",
   "homeHQ",
 ];
 
-/** Progress fill width in px (292px track max) — tuned to Figma frames */
 const PROGRESS_FILL_PX: Partial<Record<StepId, number>> = {
-  bluetoothIntro: 76,
-  planThreeParts: 88,
-  arcBedtime: 100,
-  arcSleep: 112,
-  arcWake: 124,
-  sleepIssue: 136,
+  bluetoothIntro: 60,
+  planThreeParts: 80,
+  arcCarousel: 108,
+  sleepIssue: 130,
   heardIssue: 148,
-  wakeTime: 156,
-  wakeCategory: 76,
-  wakeContent: 120,
-  wakeSummary: 140,
-  bedtime: 160,
-  easeCategory: 180,
-  easeContent: 200,
-  easeInBed: 220,
-  planSet: 240,
-  hatchPlus: 252,
-  clockLearns: 264,
-  placementIntro: 272,
-  placementDone: 280,
-  bedSize: 286,
-  shareBed: 290,
-  placementFinal: 292,
+  wakeTime: 164,
+  wakeCategory: 180,
+  wakeContent: 196,
+  wakeSummary: 212,
+  bedtime: 224,
+  easeCategory: 238,
+  easeContent: 252,
+  easeInBed: 264,
+  planSet: 272,
+  hatchPlus: 278,
+  clockLearns: 282,
+  placement: 286,
+  bedAndShare: 289,
+  threeControls: 291,
   homeHQ: 292,
 };
 
@@ -84,7 +71,7 @@ export function stepIndex(id: StepId): number {
 }
 
 export function progressFillPx(id: StepId): number {
-  return PROGRESS_FILL_PX[id] ?? 76;
+  return PROGRESS_FILL_PX[id] ?? 60;
 }
 
 export function progressForStep(id: StepId): number {

@@ -1,13 +1,13 @@
 /** Local paths for assets exported from Figma MCP */
 
 export const shellAssets = {
-  statusBar: "/media/shell/status-bar.png",
-  progressTrack: "/media/shell/progress-track.png",
-  progressFill: "/media/shell/progress-fill.png",
-  homeIndicator: "/media/shell/home-indicator.png",
-  playIcon: "/media/shell/play-icon.png",
-  checkmarkFilled: "/media/shell/checkmark-filled.png",
-  checkmarkEmpty: "/media/shell/checkmark-empty.png",
+  statusBar: "/media/shell/status-bar.svg",
+  progressTrack: "/media/shell/progress-track.svg",
+  progressFill: "/media/shell/progress-fill.svg",
+  homeIndicator: "/media/shell/home-indicator.svg",
+  playIcon: "/media/shell/play-icon.svg",
+  checkmarkFilled: "/media/shell/checkmark-filled.svg",
+  checkmarkEmpty: "/media/shell/checkmark-empty.svg",
 } as const;
 
 export const mediaAssets = {

@@ -11,9 +11,10 @@ type Props = {
   buttonVariant?: "primary" | "tertiary";
   onButtonClick: () => void;
   showFooterGradient?: boolean;
+  hideButton?: boolean;
+  onBack?: () => void;
 };
 
-/** Single 375×812 canvas — all positions match Figma frame coordinates */
 export function HscFrame({
   children,
   progressFillPx,
@@ -23,18 +24,28 @@ export function HscFrame({
   buttonVariant = "primary",
   onButtonClick,
   showFooterGradient = false,
+  hideButton = false,
+  onBack,
 }: Props) {
   return (
     <div className="hsc-page hsc-root">
       <div className="hsc-phone">
-        {/* Status bar — y:0 h:43 */}
         <div className="hsc-layer hsc-layer-status" aria-hidden>
           <img src={shellAssets.statusBar} alt="" />
         </div>
 
-        {/* Progress — y:55–83 */}
         {showProgress && (
           <div className="hsc-layer hsc-layer-progress" aria-hidden>
+            {onBack && (
+              <button
+                type="button"
+                className="hsc-back-btn"
+                onClick={onBack}
+                aria-label="Go back"
+              >
+                ‹
+              </button>
+            )}
             <p className="hsc-progress-label">Registering your Sleep Clock</p>
             <div className="hsc-progress-track-wrap">
               <img src={shellAssets.progressTrack} alt="" />
@@ -48,24 +59,23 @@ export function HscFrame({
           </div>
         )}
 
-        {/* Screen content — absolute children use Figma top/left */}
         <div className="hsc-layer hsc-layer-content">{children}</div>
 
         {showFooterGradient && (
           <div className="hsc-layer hsc-layer-footer-fade" aria-hidden />
         )}
 
-        {/* Button — Figma: x:24 y:725 w:327 h:48 */}
-        <div className="hsc-layer hsc-layer-button">
-          <HscPrimaryButton
-            label={buttonLabel}
-            disabled={buttonDisabled}
-            variant={buttonVariant}
-            onClick={onButtonClick}
-          />
-        </div>
+        {!hideButton && (
+          <div className="hsc-layer hsc-layer-button">
+            <HscPrimaryButton
+              label={buttonLabel}
+              disabled={buttonDisabled}
+              variant={buttonVariant}
+              onClick={onButtonClick}
+            />
+          </div>
+        )}
 
-        {/* Home indicator — y:769 */}
         <div className="hsc-layer hsc-layer-home" aria-hidden>
           <img src={shellAssets.homeIndicator} alt="" />
         </div>

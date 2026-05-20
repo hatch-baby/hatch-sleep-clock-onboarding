@@ -9,19 +9,22 @@ import {
 } from "./steps";
 import { defaultBedtimeTime, defaultWakeTime, type PlanSelections } from "./types";
 import {
-  ArcStaticScreen,
-  BedSizeScreen,
+  ArcCarouselScreen,
+  BedAndShareScreen,
   BedtimeScreen,
   BluetoothIntroScreen,
+  ClockLearnsScreen,
   EaseCategoryScreen,
   EaseContentScreen,
   EaseInBedScreen,
+  HatchPlusScreen,
   HeardScreen,
+  HomeHQScreen,
   PlanSetScreen,
   PlanThreePartsScreen,
-  ShareBedScreen,
-  SimpleHeadlineScreen,
+  PlacementScreen,
   SleepIssueScreen,
+  ThreeControlsScreen,
   WakeCategoryScreen,
   WakeContentScreen,
   WakeSummaryScreen,
@@ -51,23 +54,23 @@ export function HscOnboardingFlow() {
     return s ? STEPS.indexOf(s) : 0;
   });
   const [plan, setPlan] = useState(initialPlan);
-  const [bedSize, setBedSize] = useState<string | null>(null);
+  const [arcSlide, setArcSlide] = useState<0 | 1 | 2>(0);
+  const [placementChecked, setPlacementChecked] = useState([false, false, false]);
   const [shareBed, setShareBed] = useState<string | null>(null);
+  const [bedSize, setBedSize] = useState<string | null>(null);
+
   const step = STEPS[Math.min(index, STEPS.length - 1)];
 
   useEffect(() => {
     stopPreview();
+    if (step !== "arcCarousel") setArcSlide(0);
   }, [step]);
 
   useEffect(() => {
     const p = new URLSearchParams(window.location.search);
     p.set("p", "hsc");
     p.set("step", step);
-    window.history.replaceState(
-      null,
-      "",
-      window.location.pathname + "?" + p.toString()
-    );
+    window.history.replaceState(null, "", window.location.pathname + "?" + p.toString());
   }, [step]);
 
   const onNext = useCallback(
@@ -79,14 +82,30 @@ export function HscOnboardingFlow() {
     if (i >= 0) setIndex(i);
   }, []);
 
+  const handleArcAdvance = () => {
+    if (arcSlide < 2) {
+      setArcSlide((s) => (s + 1) as 0 | 1 | 2);
+    } else {
+      onNext();
+    }
+  };
+
+  const handlePlacementToggle = (i: number) => {
+    setPlacementChecked((prev) => {
+      const next = [...prev];
+      next[i] = !next[i];
+      return next;
+    });
+  };
+
   const continueDisabled =
     (step === "sleepIssue" && !plan.sleepIssue) ||
     (step === "wakeCategory" && !plan.wakeCategoryId) ||
     (step === "wakeContent" && !plan.wakePick) ||
     (step === "easeCategory" && !plan.easeCategoryId) ||
     (step === "easeContent" && !plan.easePick) ||
-    (step === "bedSize" && !bedSize) ||
-    (step === "shareBed" && !shareBed);
+    (step === "placement" && !placementChecked.every(Boolean)) ||
+    (step === "bedAndShare" && (!shareBed || !bedSize));
 
   const handleContinue = () => {
     if (step === "wakeCategory") goTo("wakeContent");
@@ -95,19 +114,28 @@ export function HscOnboardingFlow() {
   };
 
   const continueLabel = (() => {
+    if (step === "planThreeParts") return "Show me";
     if (step === "wakeTime") return "Set it";
     if (step === "heardIssue") return "Let's build the plan";
     if (step === "wakeSummary") return "Let's set bedtime now";
-    if (step === "easeInBed") return "Your plan is set";
+    if (step === "easeInBed") return "Got it";
+    if (step === "planSet") return "I'm ready";
+    if (step === "hatchPlus") return "Try for free";
+    if (step === "clockLearns") return "Let's place it right";
+    if (step === "threeControls") return "Let's go";
     if (step === "homeHQ") return "Done";
     return "Continue";
   })();
 
-  const buttonVariant =
-    step === "wakeSummary" ? ("tertiary" as const) : ("primary" as const);
+  const buttonVariant = (() => {
+    if (step === "wakeSummary" || step === "easeInBed") return "tertiary" as const;
+    return "primary" as const;
+  })();
 
-  const showFooterGradient =
-    step === "wakeContent" || step === "easeContent";
+  const showFooterGradient = step === "wakeContent" || step === "easeContent";
+
+  const isArcCarousel = step === "arcCarousel";
+  const isHomeHQ = step === "homeHQ";
 
   const renderScreen = () => {
     switch (step) {
@@ -115,12 +143,10 @@ export function HscOnboardingFlow() {
         return <BluetoothIntroScreen />;
       case "planThreeParts":
         return <PlanThreePartsScreen />;
-      case "arcBedtime":
-        return <ArcStaticScreen label="Bedtime — static until animation spec" />;
-      case "arcSleep":
-        return <ArcStaticScreen label="Sleep — static until animation spec" />;
-      case "arcWake":
-        return <ArcStaticScreen label="Wake — static until animation spec" />;
+      case "arcCarousel":
+        return (
+          <ArcCarouselScreen slide={arcSlide} onAdvance={handleArcAdvance} />
+        );
       case "sleepIssue":
         return <SleepIssueScreen plan={plan} setPlan={setPlan} />;
       case "heardIssue":
@@ -144,52 +170,29 @@ export function HscOnboardingFlow() {
       case "planSet":
         return <PlanSetScreen plan={plan} />;
       case "hatchPlus":
-        return (
-          <SimpleHeadlineScreen
-            headline="Your plan runs on Hatch+"
-            sub="Premium sounds and routines included with your membership."
-          />
-        );
+        return <HatchPlusScreen />;
       case "clockLearns":
+        return <ClockLearnsScreen />;
+      case "placement":
         return (
-          <SimpleHeadlineScreen
-            headline="Your clock learns. Your sleep gets better."
-            sub="The more you use it, the smarter your routines become."
+          <PlacementScreen
+            checked={placementChecked}
+            onToggle={handlePlacementToggle}
           />
         );
-      case "placementIntro":
+      case "bedAndShare":
         return (
-          <SimpleHeadlineScreen
-            headline="Here's where it works best"
-            sub="Place your clock on your nightstand, facing your bed."
+          <BedAndShareScreen
+            shareBed={shareBed}
+            bedSize={bedSize}
+            onShareBed={setShareBed}
+            onBedSize={setBedSize}
           />
         );
-      case "placementDone":
-        return (
-          <SimpleHeadlineScreen
-            headline="Placement complete"
-            sub="You're ready for a great night of sleep."
-          />
-        );
-      case "bedSize":
-        return (
-          <BedSizeScreen selected={bedSize} onSelect={setBedSize} />
-        );
-      case "shareBed":
-        return (
-          <ShareBedScreen selected={shareBed} onSelect={setShareBed} />
-        );
-      case "placementFinal":
-        return (
-          <SimpleHeadlineScreen
-            headline="You're all set"
-            sub="Your Sleep Clock is ready for tonight."
-          />
-        );
+      case "threeControls":
+        return <ThreeControlsScreen />;
       case "homeHQ":
-        return (
-          <SimpleHeadlineScreen headline="Welcome to your sleep headquarters." />
-        );
+        return <HomeHQScreen plan={plan} />;
       default:
         return null;
     }
@@ -204,6 +207,7 @@ export function HscOnboardingFlow() {
       buttonVariant={buttonVariant}
       onButtonClick={handleContinue}
       showFooterGradient={showFooterGradient}
+      hideButton={isArcCarousel || isHomeHQ}
     >
       {renderScreen()}
     </HscFrame>

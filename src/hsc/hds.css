@@ -827,3 +827,670 @@
   border-width: 2px;
   background: var(--hds-surface-primary);
 }
+
+/* Back button in progress header */
+.hsc-back-btn {
+  position: absolute;
+  left: 16px;
+  top: 52px;
+  width: 28px;
+  height: 28px;
+  background: transparent;
+  border: none;
+  color: var(--hds-text-primary);
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+  pointer-events: auto;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ─── Arc Carousel ───────────────────────────────────────────────── */
+.hsc-arc-carousel {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.hsc-arc-carousel-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  width: 100%;
+  padding-top: 40px;
+}
+
+.hsc-arc-slide-svg {
+  width: 160px;
+  height: 160px;
+}
+
+.hsc-arc-slide-svg--wide {
+  width: 280px;
+  height: 200px;
+}
+
+.hsc-arc-carousel-label {
+  font-family: var(--hds-font-family-header);
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 36px;
+  color: var(--hds-text-primary);
+  text-align: center;
+  padding: 0 32px;
+  margin: 0 0 28px;
+}
+
+.hsc-carousel-dots {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 52px;
+}
+
+.hsc-carousel-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  transition: background 0.2s;
+}
+
+.hsc-carousel-dot.active {
+  background: var(--hds-morning-white);
+}
+
+/* ─── Static plan arc ────────────────────────────────────────────── */
+.hsc-static-arc-wrap {
+  width: 100%;
+}
+
+.hsc-static-arc-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.hsc-static-arc-times {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 4px 0;
+}
+
+.hsc-arc-time {
+  font-family: var(--hds-font-family-content);
+  font-weight: 500;
+  font-size: var(--hds-font-size-225);
+  line-height: var(--hds-line-height-300);
+}
+
+.hsc-arc-time--bed {
+  color: #6ab4f8;
+}
+
+.hsc-arc-time--wake {
+  color: var(--hds-morning-white);
+}
+
+.hsc-arc-plan-label {
+  font-family: var(--hds-font-family-content);
+  font-weight: 400;
+  font-size: var(--hds-font-size-175);
+  color: var(--hds-text-secondary);
+}
+
+/* ─── Plan Set screen ────────────────────────────────────────────── */
+.hsc-planset-title-block {
+  left: 20px;
+  top: 100px;
+  width: 335px;
+  text-align: center;
+}
+
+.hsc-planset-title {
+  margin: 0;
+  font-family: var(--hds-font-family-header);
+  font-weight: 500;
+  font-size: var(--hds-font-size-250);
+  line-height: 28px;
+  color: var(--hds-text-primary);
+}
+
+.hsc-planset-arc {
+  left: 24px;
+  top: 240px;
+  width: 327px;
+}
+
+.hsc-planset-body {
+  left: 20px;
+  top: 506px;
+  width: 335px;
+  margin: 0;
+  font-family: var(--hds-font-family-header);
+  font-weight: 400;
+  font-size: var(--hds-font-size-200);
+  line-height: 22px;
+  color: var(--hds-text-secondary);
+  text-align: center;
+}
+
+/* ─── Hatch+ screen ──────────────────────────────────────────────── */
+.hsc-hatch-title-block {
+  left: 20px;
+  top: 104px;
+  width: 335px;
+  text-align: center;
+}
+
+.hsc-hatch-title {
+  margin: 0;
+}
+
+.hsc-hatch-subtitle {
+  margin: 8px 0 0;
+}
+
+.hsc-hatch-options {
+  left: 20px;
+  top: 530px;
+  width: 335px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.hsc-hatch-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  border-radius: var(--hds-radius-card);
+  border: 1.5px solid var(--hds-border-accent);
+  background: var(--hds-surface-primary);
+  cursor: pointer;
+  text-align: left;
+  position: relative;
+  pointer-events: auto;
+}
+
+.hsc-hatch-option.selected {
+  border-color: var(--hds-morning-white);
+  border-width: 2px;
+}
+
+.hsc-hatch-option-radio {
+  flex-shrink: 0;
+}
+
+.hsc-radio {
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid var(--hds-text-secondary);
+  background: transparent;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.hsc-radio.checked {
+  border-color: var(--hds-morning-white);
+  background: var(--hds-morning-white);
+}
+
+.hsc-hatch-option-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.hsc-hatch-option-text strong {
+  font-family: var(--hds-font-family-content);
+  font-weight: 500;
+  font-size: var(--hds-font-size-200);
+  color: var(--hds-text-primary);
+}
+
+.hsc-hatch-option-text span {
+  font-family: var(--hds-font-family-content);
+  font-weight: 400;
+  font-size: var(--hds-font-size-175);
+  color: var(--hds-text-secondary);
+}
+
+.hsc-hatch-badge {
+  position: absolute;
+  top: -10px;
+  right: 14px;
+  background: #e03d3d;
+  color: #fff;
+  font-family: var(--hds-font-family-content);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.hsc-hatch-note {
+  font-family: var(--hds-font-family-content);
+  font-size: var(--hds-font-size-175);
+  color: var(--hds-text-secondary);
+  text-align: center;
+  margin: 4px 0 0;
+}
+
+/* ─── Clock Learns screen ────────────────────────────────────────── */
+.hsc-clock-learns-body {
+  left: 20px;
+  top: 490px;
+  width: 335px;
+  margin: 0;
+  font-family: var(--hds-font-family-header);
+  font-weight: 400;
+  font-size: var(--hds-font-size-200);
+  line-height: 22px;
+  color: var(--hds-text-secondary);
+}
+
+.hsc-clock-learns-body--2 {
+  top: 558px;
+}
+
+/* ─── Placement screen ───────────────────────────────────────────── */
+.hsc-placement-list {
+  left: 20px;
+  top: 240px;
+  width: 335px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.hsc-placement-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  border-radius: var(--hds-radius-card);
+  border: 1.5px solid var(--hds-border-accent);
+  background: var(--hds-surface-primary);
+  cursor: pointer;
+  text-align: left;
+  pointer-events: auto;
+  width: 100%;
+  box-sizing: border-box;
+  gap: 12px;
+}
+
+.hsc-placement-item.checked {
+  border-color: var(--hds-morning-white);
+  border-width: 2px;
+}
+
+.hsc-placement-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.hsc-placement-text strong {
+  font-family: var(--hds-font-family-content);
+  font-weight: 500;
+  font-size: var(--hds-font-size-200);
+  color: var(--hds-text-primary);
+}
+
+.hsc-placement-text span {
+  font-family: var(--hds-font-family-content);
+  font-weight: 400;
+  font-size: var(--hds-font-size-175);
+  color: var(--hds-text-secondary);
+  line-height: 18px;
+}
+
+.hsc-placement-check {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+}
+
+/* ─── Bed + Share combined screen ────────────────────────────────── */
+.hsc-bed-share-wrap {
+  left: 20px;
+  top: 104px;
+  width: 335px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.hsc-bed-share-section-title {
+  font-family: var(--hds-font-family-header);
+  font-weight: 500;
+  font-size: var(--hds-font-size-250);
+  color: var(--hds-text-primary);
+  margin: 0 0 12px;
+  text-align: center;
+}
+
+.hsc-bed-share-section-title--2 {
+  margin-top: 20px;
+}
+
+.hsc-bed-share-toggle {
+  display: flex;
+  gap: 12px;
+}
+
+.hsc-share-btn {
+  flex: 1;
+  padding: 14px 0;
+  border-radius: var(--hds-radius-card);
+  border: 1.5px solid var(--hds-border-accent);
+  background: transparent;
+  font-family: var(--hds-font-family-content);
+  font-size: var(--hds-font-size-225);
+  font-weight: 500;
+  color: var(--hds-text-primary);
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.hsc-share-btn.selected {
+  border-color: var(--hds-morning-white);
+  border-width: 2px;
+  background: var(--hds-morning-white);
+  color: var(--hds-surface-dark);
+}
+
+.hsc-bed-size-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ─── Three Controls screen ──────────────────────────────────────── */
+.hsc-three-title-block {
+  left: 20px;
+  top: 104px;
+  width: 335px;
+  text-align: center;
+}
+
+.hsc-three-eyebrow {
+  font-family: var(--hds-font-family-content);
+  font-weight: 400;
+  font-size: var(--hds-font-size-175);
+  color: var(--hds-text-secondary);
+  margin: 0 0 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.hsc-three-title {
+  margin: 0;
+}
+
+.hsc-three-list {
+  left: 20px;
+  top: 236px;
+  width: 335px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.hsc-three-card {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  border-radius: var(--hds-radius-card);
+  overflow: hidden;
+  height: 90px;
+}
+
+.hsc-three-card-art {
+  width: 100px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: rgba(0,0,0,0.2);
+}
+
+.hsc-three-card-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 0 16px;
+  flex: 1;
+}
+
+.hsc-three-card-text strong {
+  font-family: var(--hds-font-family-content);
+  font-weight: 500;
+  font-size: var(--hds-font-size-225);
+  color: var(--hds-text-primary);
+}
+
+.hsc-three-card-text span {
+  font-family: var(--hds-font-family-content);
+  font-weight: 400;
+  font-size: var(--hds-font-size-175);
+  color: var(--hds-text-secondary);
+  line-height: 18px;
+}
+
+/* ─── Home HQ screen ─────────────────────────────────────────────── */
+.hsc-home-root {
+  position: absolute;
+  inset: 0;
+  background: var(--hds-surface-dark);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.hsc-home-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 50px 20px 0;
+  height: 88px;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.hsc-home-topbar-time {
+  font-family: var(--hds-font-family-content);
+  font-size: 13px;
+  color: var(--hds-text-secondary);
+}
+
+.hsc-home-topbar-icons {
+  display: flex;
+  gap: 16px;
+}
+
+.hsc-home-nav-icon {
+  font-size: 20px;
+  color: var(--hds-text-primary);
+  cursor: pointer;
+}
+
+.hsc-home-headline {
+  font-family: var(--hds-font-family-header);
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 28px;
+  color: var(--hds-text-primary);
+  padding: 16px 20px 0;
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.hsc-home-headline--gold {
+  color: #c8a84b;
+}
+
+.hsc-home-arc {
+  padding: 12px 20px 0;
+  flex-shrink: 0;
+}
+
+.hsc-home-card {
+  margin: 12px 20px 0;
+  background: #1a3a7a;
+  border-radius: 14px;
+  padding: 16px;
+  flex-shrink: 0;
+}
+
+.hsc-home-card-title {
+  font-family: var(--hds-font-family-content);
+  font-weight: 600;
+  font-size: var(--hds-font-size-200);
+  color: var(--hds-text-primary);
+  margin: 0 0 6px;
+}
+
+.hsc-home-card-body {
+  font-family: var(--hds-font-family-content);
+  font-weight: 400;
+  font-size: var(--hds-font-size-175);
+  line-height: 18px;
+  color: rgba(255,255,255,0.8);
+  margin: 0 0 12px;
+}
+
+.hsc-home-card-btn {
+  background: var(--hds-surface-primary);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: var(--hds-radius-round);
+  color: var(--hds-text-primary);
+  font-family: var(--hds-font-family-content);
+  font-size: var(--hds-font-size-175);
+  font-weight: 500;
+  padding: 8px 20px;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.hsc-home-day0 {
+  margin: 12px 20px 0;
+  background: var(--hds-surface-primary);
+  border-radius: 14px;
+  padding: 14px 16px;
+  flex-shrink: 0;
+}
+
+.hsc-home-day0-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.hsc-home-day0-label {
+  font-family: var(--hds-font-family-content);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  color: var(--hds-text-secondary);
+}
+
+.hsc-home-day0-info {
+  font-size: 14px;
+  color: var(--hds-text-secondary);
+}
+
+.hsc-home-day0-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hsc-home-day0-sub {
+  font-family: var(--hds-font-family-content);
+  font-size: 13px;
+  color: var(--hds-text-secondary);
+  margin: 0 0 2px;
+}
+
+.hsc-home-day0-count {
+  font-family: var(--hds-font-family-header);
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--hds-text-primary);
+  margin: 0;
+}
+
+.hsc-home-night-dots {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.hsc-home-night-dot {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #0d2244;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--hds-font-family-content);
+  font-size: 11px;
+  color: var(--hds-text-secondary);
+}
+
+.hsc-home-tabbar {
+  margin-top: auto;
+  display: flex;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding: 8px 0 28px;
+  flex-shrink: 0;
+}
+
+.hsc-home-tab {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  background: transparent;
+  border: none;
+  color: var(--hds-text-secondary);
+  font-family: var(--hds-font-family-content);
+  font-size: 11px;
+  cursor: pointer;
+  pointer-events: auto;
+  padding: 6px 0 0;
+}
+
+.hsc-home-tab--active {
+  color: var(--hds-morning-white);
+}
+
+.hsc-home-tab-icon {
+  font-size: 18px;
+}
+
+/* Ease in bed card position override */
+.hsc-routine-card--ease {
+  top: 400px;
+}

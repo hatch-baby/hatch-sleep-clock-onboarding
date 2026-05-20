@@ -24,17 +24,17 @@ export type SleepIssue =
 
 export const SLEEP_ISSUES: { id: SleepIssue; label: string }[] = [
   { id: "bedtimeTooLate", label: "I go to bed too late" },
-  { id: "cantSwitchOff", label: "I can't switch off at night" },
-  { id: "keepWaking", label: "I keep waking up at night" },
-  { id: "wakeNotRested", label: "I wake up and don't feel rested" },
-  { id: "allOkay", label: "Everything's pretty okay" },
+  { id: "cantSwitchOff", label: "I can't switch my mind off to sleep" },
+  { id: "keepWaking", label: "I wake up through the night" },
+  { id: "wakeNotRested", label: "I never wake up feeling rested" },
+  { id: "allOkay", label: "I sleep fine" },
 ];
 
 export const HEARD_COPY: Record<SleepIssue, string> = {
   bedtimeTooLate:
     "Supporting you going to bed on time is part of the plan. Like a bedtime you'll look forward to.",
   cantSwitchOff:
-    "Winding down is harder than it sounds. That's exactly what the ease-in routine is for.",
+    "Supporting you easing in to sleep is part of the plan. Like a wind-down that lets the day go.",
   keepWaking:
     "Waking mid-sleep is rough. Your plan will help train a more consistent night.",
   wakeNotRested:
