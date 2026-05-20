@@ -21,6 +21,7 @@ import {
   PlanThreePartsScreen,
   ShareBedScreen,
   SimpleHeadlineScreen,
+  SleepIssueScreen,
   WakeCategoryScreen,
   WakeContentScreen,
   WakeSummaryScreen,
@@ -29,6 +30,7 @@ import {
 import "./hds.css";
 
 const initialPlan = (): PlanSelections => ({
+  sleepIssue: null,
   wakeTime: { ...defaultWakeTime },
   wakeDays: [1, 2, 3, 4, 5],
   bedtimeTime: { ...defaultBedtimeTime },
@@ -78,6 +80,7 @@ export function HscOnboardingFlow() {
   }, []);
 
   const continueDisabled =
+    (step === "sleepIssue" && !plan.sleepIssue) ||
     (step === "wakeCategory" && !plan.wakeCategoryId) ||
     (step === "wakeContent" && !plan.wakePick) ||
     (step === "easeCategory" && !plan.easeCategoryId) ||
@@ -92,6 +95,7 @@ export function HscOnboardingFlow() {
   };
 
   const continueLabel = (() => {
+    if (step === "heardIssue") return "Let's build a plan";
     if (step === "wakeSummary") return "Now let's set bedtime";
     if (step === "easeInBed") return "Your plan is set";
     if (step === "homeHQ") return "Done";
@@ -116,20 +120,10 @@ export function HscOnboardingFlow() {
         return <ArcStaticScreen label="Sleep — static until animation spec" />;
       case "arcWake":
         return <ArcStaticScreen label="Wake — static until animation spec" />;
-      case "arcEaseIn":
-        return <ArcStaticScreen label="Ease in — static until animation spec" />;
-      case "heardBedtime":
-        return (
-          <HeardScreen text="Heard. Going to bed on time is part of the plan." />
-        );
-      case "heardWake":
-        return (
-          <HeardScreen text="Heard. Waking up well is part of the plan." />
-        );
-      case "heardPlan":
-        return (
-          <HeardScreen text="Heard. Let's build a plan: bedtime, wind-down, gentle wake." />
-        );
+      case "sleepIssue":
+        return <SleepIssueScreen plan={plan} setPlan={setPlan} />;
+      case "heardIssue":
+        return <HeardScreen issue={plan.sleepIssue} />;
       case "wakeTime":
         return <WakeTimeScreen plan={plan} setPlan={setPlan} />;
       case "wakeCategory":

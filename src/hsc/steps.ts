@@ -4,10 +4,8 @@ export type StepId =
   | "arcBedtime"
   | "arcSleep"
   | "arcWake"
-  | "arcEaseIn"
-  | "heardBedtime"
-  | "heardWake"
-  | "heardPlan"
+  | "sleepIssue"
+  | "heardIssue"
   | "wakeTime"
   | "wakeCategory"
   | "wakeContent"
@@ -32,10 +30,8 @@ export const STEPS: StepId[] = [
   "arcBedtime",
   "arcSleep",
   "arcWake",
-  "arcEaseIn",
-  "heardBedtime",
-  "heardWake",
-  "heardPlan",
+  "sleepIssue",
+  "heardIssue",
   "wakeTime",
   "wakeCategory",
   "wakeContent",
@@ -60,12 +56,10 @@ const PROGRESS_FILL_PX: Partial<Record<StepId, number>> = {
   bluetoothIntro: 76,
   planThreeParts: 88,
   arcBedtime: 100,
-  arcSleep: 108,
-  arcWake: 116,
-  arcEaseIn: 124,
-  heardBedtime: 132,
-  heardWake: 140,
-  heardPlan: 148,
+  arcSleep: 112,
+  arcWake: 124,
+  sleepIssue: 136,
+  heardIssue: 148,
   wakeTime: 156,
   wakeCategory: 76,
   wakeContent: 120,

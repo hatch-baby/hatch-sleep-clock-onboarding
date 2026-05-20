@@ -9,7 +9,12 @@ import {
 } from "../contentManifest";
 import { mediaAssets, wakeSummaryAssets } from "../figmaAssets";
 import { formatTime, sunriseStartLabel } from "../formatTime";
-import type { PlanSelections } from "../types";
+import {
+  HEARD_COPY,
+  SLEEP_ISSUES,
+  type PlanSelections,
+  type SleepIssue,
+} from "../types";
 import { HscCategoryGrid } from "../components/HscCategoryGrid";
 import { HscContentPicker } from "../components/HscContentPicker";
 import { HscTimePicker } from "../components/HscTimePicker";
@@ -53,7 +58,40 @@ export function ArcStaticScreen({ label }: { label: string }) {
   return <div className="hsc-abs hsc-arc-placeholder">{label}</div>;
 }
 
-export function HeardScreen({ text }: { text: string }) {
+export function SleepIssueScreen({
+  plan,
+  setPlan,
+}: ScreenProps) {
+  return (
+    <>
+      <div className="hsc-abs hsc-abs-headline-block hsc-abs-headline-block--category">
+        <h1 className="hds-h5 hsc-abs-headline-title">
+          What&apos;s getting in the way of good sleep?
+        </h1>
+      </div>
+      <div className="hsc-abs hsc-abs-bed-list">
+        {SLEEP_ISSUES.map((issue) => (
+          <button
+            key={issue.id}
+            type="button"
+            className={
+              "hsc-bed-option" +
+              (plan.sleepIssue === issue.id ? " selected" : "")
+            }
+            onClick={() =>
+              setPlan((p) => ({ ...p, sleepIssue: issue.id as SleepIssue }))
+            }
+          >
+            {issue.label}
+          </button>
+        ))}
+      </div>
+    </>
+  );
+}
+
+export function HeardScreen({ issue }: { issue: SleepIssue | null }) {
+  const text = issue ? HEARD_COPY[issue] : HEARD_COPY.allOkay;
   return (
     <p className="hsc-abs hsc-abs-center-copy hsc-body-dark">{text}</p>
   );
