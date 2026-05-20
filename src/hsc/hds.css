@@ -133,28 +133,30 @@
   left: 41px;
   top: 83px;
   width: 292px;
-  height: 12px;
-  overflow: visible;
-  transform: translateY(-6px);
+  height: 6px;
+  overflow: hidden;
+  transform: translateY(-3px);
 }
 
 .hsc-progress-track-wrap img {
   width: 292px;
-  height: auto;
+  height: 6px;
+  display: block;
 }
 
 .hsc-progress-fill-wrap {
   position: absolute;
   left: 41px;
   top: 83px;
-  height: 12px;
+  height: 6px;
   overflow: hidden;
-  transform: translateY(-6px);
+  transform: translateY(-3px);
 }
 
 .hsc-progress-fill-wrap img {
   width: 292px;
-  height: auto;
+  height: 6px;
+  display: block;
 }
 
 /* Content layer — children position themselves */
