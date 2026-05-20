@@ -9,11 +9,11 @@ type Props = {
   onSelect: (id: string) => void;
 };
 
-const posClass: Record<Position, string> = {
-  tl: "hsc-category-tile--tl",
-  tr: "hsc-category-tile--tr",
-  bl: "hsc-category-tile--bl",
-  br: "hsc-category-tile--br",
+const posStyle: Record<Position, { left: number; top: number }> = {
+  tl: { left: 18, top: 244 },
+  tr: { left: 193, top: 244 },
+  bl: { left: 18, top: 410 },
+  br: { left: 193, top: 410 },
 };
 
 export function HscCategoryGrid({
@@ -25,19 +25,19 @@ export function HscCategoryGrid({
   const byId = Object.fromEntries(categories.map((c) => [c.id, c]));
 
   return (
-    <div className="hsc-category-grid">
+    <>
       {positions.map(({ id, pos }) => {
         const cat = byId[id];
         if (!cat) return null;
+        const { left, top } = posStyle[pos];
         return (
           <button
             key={id}
             type="button"
             className={
-              "hsc-category-tile " +
-              posClass[pos] +
-              (selectedId === id ? " selected" : "")
+              "hsc-category-tile" + (selectedId === id ? " selected" : "")
             }
+            style={{ left, top }}
             onClick={() => onSelect(id)}
           >
             <h3>{cat.title}</h3>
@@ -45,6 +45,6 @@ export function HscCategoryGrid({
           </button>
         );
       })}
-    </div>
+    </>
   );
 }

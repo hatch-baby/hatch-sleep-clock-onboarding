@@ -1,7 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { HscFooter } from "./components/HscFooter";
-import { HscPhoneShell } from "./components/HscPhoneShell";
-import { HscPrimaryButton } from "./components/HscPrimaryButton";
+import { HscFrame } from "./components/HscFrame";
 import { stopPreview } from "./audioPreview";
 import {
   progressFillPx,
@@ -103,6 +101,9 @@ export function HscOnboardingFlow() {
   const buttonVariant =
     step === "wakeSummary" ? ("tertiary" as const) : ("primary" as const);
 
+  const showFooterGradient =
+    step === "wakeContent" || step === "easeContent";
+
   const renderScreen = () => {
     switch (step) {
       case "bluetoothIntro":
@@ -200,21 +201,16 @@ export function HscOnboardingFlow() {
   };
 
   return (
-    <HscPhoneShell
+    <HscFrame
       progressFillPx={progressFillPx(step)}
       showProgress={showProgressHeader(step)}
-      footer={
-        <HscFooter showGradient={step !== "bluetoothIntro"}>
-          <HscPrimaryButton
-            label={continueLabel}
-            disabled={continueDisabled}
-            variant={buttonVariant}
-            onClick={handleContinue}
-          />
-        </HscFooter>
-      }
+      buttonLabel={continueLabel}
+      buttonDisabled={continueDisabled}
+      buttonVariant={buttonVariant}
+      onButtonClick={handleContinue}
+      showFooterGradient={showFooterGradient}
     >
       {renderScreen()}
-    </HscPhoneShell>
+    </HscFrame>
   );
 }
