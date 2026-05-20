@@ -46,8 +46,7 @@ export function HscFrame({
                 ‹
               </button>
             )}
-            <p className="hsc-progress-label">Registering your Sleep Clock</p>
-            <div className="hsc-progress-track-wrap">
+<div className="hsc-progress-track-wrap">
               <img src={shellAssets.progressTrack} alt="" />
             </div>
             <div
