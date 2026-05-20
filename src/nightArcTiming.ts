@@ -1,0 +1,58 @@
+export const NIGHT_ARC_CYCLE_MS = 29000;
+export const OPENING_HERO_HOLD_MS = 6000;
+export const DEFAULT_NIGHT_ARC_START_DELAY_MS = OPENING_HERO_HOLD_MS;
+export const NIGHT_ARC_TIMES_END_MS = 1400;
+export const NIGHT_ARC_PLAN_ARC_START_MS = 1400;
+export const NIGHT_ARC_PLAN_ARC_END_MS = 2800;
+export const NIGHT_ARC_TAP_AT_MS = 2800;
+export const NIGHT_ARC_TAP_VISIBLE_MS = NIGHT_ARC_TAP_AT_MS + 160;
+export const NIGHT_ARC_TRACK_START_MS = 5800;
+export const NIGHT_ARC_IN_BED_DELAY_MS = 1100;
+export const NIGHT_ARC_IN_BED_CARD_MS = NIGHT_ARC_TRACK_START_MS + NIGHT_ARC_IN_BED_DELAY_MS;
+export const NIGHT_ARC_DOT_HOLD_IN_BED_MS = 1300;
+export const NIGHT_ARC_IN_BED_HOLD_END_MS = NIGHT_ARC_IN_BED_CARD_MS + NIGHT_ARC_DOT_HOLD_IN_BED_MS;
+export const NIGHT_ARC_TRACK_TRAVEL_MS = 16000;
+export const NIGHT_ARC_REM_PROGRESS = 0.5;
+export const NIGHT_ARC_REM_CARD_MS =
+  NIGHT_ARC_TRACK_START_MS + Math.round(NIGHT_ARC_TRACK_TRAVEL_MS * NIGHT_ARC_REM_PROGRESS);
+export const NIGHT_ARC_DOT_HOLD_REM_MS = 1400;
+export const NIGHT_ARC_REM_HOLD_END_MS = NIGHT_ARC_REM_CARD_MS + NIGHT_ARC_DOT_HOLD_REM_MS;
+export const NIGHT_ARC_TRACK_END_MS = NIGHT_ARC_TRACK_START_MS + NIGHT_ARC_TRACK_TRAVEL_MS;
+export const NIGHT_ARC_PAUSE_END_MS = NIGHT_ARC_TRACK_END_MS + 3200;
+
+export const NIGHT_STORY_CARD_FADE_MS = 850;
+export const NIGHT_STORY_MEDITATION_END_MS = NIGHT_ARC_TRACK_START_MS;
+export const NIGHT_STORY_IN_BED_END_MS = NIGHT_ARC_REM_CARD_MS + 1600;
+export const NIGHT_STORY_REM_END_MS = NIGHT_ARC_REM_HOLD_END_MS + 1600;
+
+export const NIGHT_STORY_CARD_WINDOWS = [
+  {
+    id: "meditation",
+    start: NIGHT_ARC_TAP_VISIBLE_MS,
+    end: NIGHT_STORY_MEDITATION_END_MS,
+  },
+  {
+    id: "in-bed",
+    start: NIGHT_ARC_IN_BED_CARD_MS,
+    end: NIGHT_STORY_IN_BED_END_MS,
+  },
+  {
+    id: "rem",
+    start: NIGHT_ARC_REM_CARD_MS,
+    end: NIGHT_STORY_REM_END_MS,
+  },
+  {
+    id: "restpresso",
+    start: NIGHT_ARC_TRACK_END_MS,
+    end: NIGHT_ARC_PAUSE_END_MS,
+  },
+  {
+    id: "insight",
+    start: NIGHT_ARC_PAUSE_END_MS,
+    end: NIGHT_ARC_CYCLE_MS,
+  },
+] as const;
+
+export function getNightArcCompletionMs(startDelayMs = DEFAULT_NIGHT_ARC_START_DELAY_MS) {
+  return startDelayMs + NIGHT_ARC_PAUSE_END_MS;
+}
