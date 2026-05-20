@@ -588,70 +588,140 @@
   margin: 0;
 }
 
-/* Time picker — centered below headline */
+/* Time picker — Figma 725: drum-roll style */
 .hsc-abs-time-picker {
   left: 20px;
-  top: 220px;
+  top: 200px;
   width: 335px;
 }
 
-.hsc-time-picker {
+/* Wrapper for the whole time + days unit */
+.hsc-time-picker-wrap {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 0;
 }
 
-.hsc-time-display {
-  font-family: var(--hds-font-family-display);
-  font-weight: 100;
-  font-size: 56px;
-  line-height: 1;
+/* "RISE TIME" / "SELECT DAYS" label — Figma: DemiBold 14px uppercase tracking-1 #979797 */
+.hsc-drum-label {
+  font-family: var(--hds-font-family-content);
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #979797;
+  text-align: center;
+  margin: 0 0 8px;
+}
+
+.hsc-drum-label--days {
+  color: #a3a3a3;
+  margin-top: 24px;
+}
+
+/* Drum picker container */
+.hsc-drum-picker {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  width: 230px;
+  height: 138px;
+}
+
+/* Selection highlight bar behind middle row */
+.hsc-drum-highlight {
+  position: absolute;
+  left: -14px;
+  right: -14px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 39px;
+  border-radius: 8px;
+  background: rgba(241, 235, 225, 0.05);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Each column */
+.hsc-drum-col {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  height: 138px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+/* Each item in a column — row height ~27.6px (138/5) */
+.hsc-drum-item {
+  font-family: var(--hds-font-family-content);
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 22px;
   color: var(--hds-text-variant-primary);
-  letter-spacing: -1px;
+  text-align: center;
+  height: 27px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  user-select: none;
 }
 
-.hsc-time-controls {
+.hsc-drum-item--selected {
+  cursor: default;
+}
+
+/* Days selector */
+.hsc-days-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 317px;
+}
+
+.hsc-days-row {
   display: flex;
   gap: 12px;
   align-items: center;
+  justify-content: center;
 }
 
-.hsc-time-controls button {
-  width: 44px;
-  height: 44px;
-  border-radius: var(--hds-radius-round);
-  border: 1px solid rgba(241, 235, 225, 0.25);
-  background: var(--hds-surface-primary);
+.hsc-day-btn {
+  width: 35px;
+  height: 35px;
+  border-radius: 20px;
+  border: none;
+  background: #13294b;
   color: var(--hds-text-primary);
-  font-size: 20px;
-  cursor: pointer;
   font-family: var(--hds-font-family-content);
-  pointer-events: auto;
-}
-
-.hsc-time-period {
-  display: flex;
-  gap: 8px;
-  margin-top: 16px;
-}
-
-.hsc-time-period button {
-  padding: 8px 20px;
-  border-radius: var(--hds-radius-round);
-  border: 1px solid rgba(241, 235, 225, 0.25);
-  background: transparent;
-  color: var(--hds-text-secondary);
-  font-family: var(--hds-font-family-content);
-  font-size: var(--hds-font-size-175);
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: -0.2px;
+  text-align: center;
   cursor: pointer;
   pointer-events: auto;
 }
 
-.hsc-time-period button.active {
+.hsc-day-btn.active {
   background: var(--hds-morning-white);
   color: var(--hds-surface-dark);
-  border-color: var(--hds-morning-white);
+}
+
+.hsc-days-hint {
+  font-family: var(--hds-font-family-content);
+  font-weight: 400;
+  font-size: var(--hds-font-size-175);
+  line-height: var(--hds-line-height-200);
+  color: var(--hds-text-primary);
+  text-align: center;
+  margin: 12px 0 0;
 }
 
 /* Generic centered copy screens */
@@ -669,6 +739,27 @@
   line-height: var(--hds-line-height-250);
   color: var(--hds-text-variant-primary);
   margin: 0;
+}
+
+/* Heard screen — Figma 748: bottom of text block at y:685, text-bottom anchored */
+.hsc-heard-block {
+  left: 20px;
+  top: 685px;
+  transform: translateY(-100%);
+  width: 335px;
+}
+
+.hsc-heard-text {
+  font-family: var(--hds-font-family-header);
+  font-weight: 500;
+  font-size: var(--hds-font-size-300);
+  line-height: var(--hds-line-height-300);
+  color: var(--hds-text-primary);
+  margin: 0;
+}
+
+.hsc-heard-text--spacer {
+  line-height: var(--hds-line-height-300);
 }
 
 .hsc-arc-placeholder {

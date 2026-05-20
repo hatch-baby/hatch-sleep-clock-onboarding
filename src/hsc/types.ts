@@ -32,15 +32,15 @@ export const SLEEP_ISSUES: { id: SleepIssue; label: string }[] = [
 
 export const HEARD_COPY: Record<SleepIssue, string> = {
   bedtimeTooLate:
-    "Heard. Going to bed on time is a big piece of this. We'll work on it.",
+    "Supporting you going to bed on time is part of the plan. Like a bedtime you'll look forward to.",
   cantSwitchOff:
-    "Heard. Winding down is harder than it sounds. That's what the ease-in is for.",
+    "Winding down is harder than it sounds. That's exactly what the ease-in routine is for.",
   keepWaking:
-    "Heard. Waking mid-sleep is rough. Your plan will help train a more consistent night.",
+    "Waking mid-sleep is rough. Your plan will help train a more consistent night.",
   wakeNotRested:
-    "Heard. Waking up groggy means something's off. Let's fix your whole night.",
+    "Waking up groggy means something's off. Let's fix your whole night.",
   allOkay:
-    "Heard. Let's build a plan: bedtime, wind-down, and a gentle wake-up.",
+    "Let's build a plan anyway — bedtime, wind-down, and a gentle wake-up.",
 };
 
 export type PlanSelections = {

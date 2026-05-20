@@ -93,7 +93,11 @@ export function SleepIssueScreen({
 export function HeardScreen({ issue }: { issue: SleepIssue | null }) {
   const text = issue ? HEARD_COPY[issue] : HEARD_COPY.allOkay;
   return (
-    <p className="hsc-abs hsc-abs-center-copy hsc-body-dark">{text}</p>
+    <div className="hsc-abs hsc-heard-block">
+      <p className="hsc-heard-text">Got it.</p>
+      <p className="hsc-heard-text hsc-heard-text--spacer">&nbsp;</p>
+      <p className="hsc-heard-text">{text}</p>
+    </div>
   );
 }
 
@@ -109,6 +113,9 @@ export function WakeTimeScreen({ plan, setPlan }: ScreenProps) {
         <HscTimePicker
           value={plan.wakeTime}
           onChange={(wakeTime) => setPlan((p) => ({ ...p, wakeTime }))}
+          showDays
+          days={plan.wakeDays}
+          onDaysChange={(wakeDays) => setPlan((p) => ({ ...p, wakeDays }))}
         />
       </div>
     </>

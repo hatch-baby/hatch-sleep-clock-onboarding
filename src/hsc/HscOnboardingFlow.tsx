@@ -95,8 +95,9 @@ export function HscOnboardingFlow() {
   };
 
   const continueLabel = (() => {
-    if (step === "heardIssue") return "Let's build a plan";
-    if (step === "wakeSummary") return "Now let's set bedtime";
+    if (step === "wakeTime") return "Set it";
+    if (step === "heardIssue") return "Let's build the plan";
+    if (step === "wakeSummary") return "Let's set bedtime now";
     if (step === "easeInBed") return "Your plan is set";
     if (step === "homeHQ") return "Done";
     return "Continue";
